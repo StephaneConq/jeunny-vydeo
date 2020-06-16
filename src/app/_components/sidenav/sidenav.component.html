@@ -1,0 +1,26 @@
+<main fxLayout="column" fxLayoutAlign="center center">
+  <div fxFlex="30" fxLayout="column" fxLayoutAlign="space-around center">
+    <h2>Jeunny Vydeo</h2>
+    <img [src]="profilePic" />
+    <h3>Stéphane Conq</h3>
+  </div>
+
+  <div fxFlex="60">
+    <mat-list>
+      <div *ngFor="let l of links">
+        <mat-divider></mat-divider>
+        <mat-list-item matRipple
+                       [routerLink]="l.link"
+                       (click)="clickedOnLink()"
+                       [ngClass]="{'current': isOnThisPage(l.link)}">
+          <mat-icon mat-list-icon>{{l.icon}}</mat-icon>
+          <div mat-line>{{l.text}}</div>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+      </div>
+    </mat-list>
+  </div>
+  <div fxFlex="10" fxLayoutAlign="center center">
+    <button mat-button (click)="logout(); clickedOnLink();">Se déconnecter</button>
+  </div>
+</main>

@@ -1,0 +1,68 @@
+<main fxLayout="column" *ngIf="currentGame">
+  <header fxLayoutAlign="center center"
+          #header
+          class="full-page-height"
+          [ngStyle]="{background: 'url(' + currentGame.background_image + ')'}">
+    <h1 fxLayoutAlign="center center">
+      <span>
+        {{currentGame.name}}
+      </span>
+    </h1>
+    <button mat-fab
+            class="scroll-button bottom"
+            (click)="scroll(details)">
+      <mat-icon>keyboard_arrow_down</mat-icon>
+    </button>
+  </header>
+  <div class="details"
+       [ngStyle]="{background: 'url(' + currentGame.background_image_additional + ')'}"
+       #details
+       fxLayoutAlign="center center">
+
+    <div fxLayoutAlign="center center" fxLayout="column">
+      <button mat-fab
+              class="scroll-button top"
+              (click)="scroll(header)">
+        <mat-icon>keyboard_arrow_up</mat-icon>
+      </button>
+
+      <h2>{{currentGame.name}}</h2>
+      <p *ngIf="currentGame.released">
+        <b>Date de sortie :</b> {{getLocalDateString(currentGame.released)}}
+      </p>
+      <p *ngIf="currentGame.genres && currentGame.genres.length > 0">
+        <b>Genre</b><span *ngIf="currentGame.genres.length > 1">s</span> : {{getGenres(currentGame)}}
+      </p>
+      <p *ngIf="currentGame.description_raw">
+        <b>Description :</b> {{currentGame.description_raw | slice:0:200}}...
+      </p>
+      <p *ngIf="currentGame.platforms">
+        <b>Plateformes :</b> {{getPlateformes(currentGame)}}
+      </p>
+
+      <button mat-fab
+              class="scroll-button bottom"
+              (click)="scroll(medias)">
+        <mat-icon>keyboard_arrow_down</mat-icon>
+      </button>
+    </div>
+  </div>
+  <div class="medias" #medias fxLayoutAlign="center center" fxLayout="column">
+    <div *ngFor="let img of screenshots" fxLayoutAlign="center center">
+      <img [src]="img.image" alt="screenshot"/>
+    </div>
+  </div>
+  <button *ngIf="displayBackToTop" mat-fab (click)="scroll(header)" color="primary" class="bottom-fab back-to-top">
+    <mat-icon>keyboard_arrow_up</mat-icon>
+  </button>
+
+  <button (click)="addGame()"
+          mat-fab
+          [disabled]="alreadyAdded"
+          color="primary"
+          class="bottom-fab add-collecion">
+    <mat-icon>{{alreadyAdded ? 'check' : 'add'}}</mat-icon>
+  </button>
+</main>
+
+

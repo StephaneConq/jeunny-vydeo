@@ -1,0 +1,33 @@
+main {
+  overflow-x: hidden;
+
+  mat-divider {
+    width: 100%;
+  }
+
+  & > div {
+    h2 {
+      background: linear-gradient(to right, #b68cff 0%, #673ab7 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    img {
+      width: 50%;
+      border-radius: 50%;
+    }
+  }
+
+  div {
+    width: 100%;
+  }
+}
+
+mat-list-item.current {
+  border-left: 5px solid #673ab7;
+
+  mat-icon {
+    color: #673ab7;
+    font-weight: bold;
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "hosting": [
+    {
+      "target": "jeunny-vydeo",
+      "public": "dist/jeunny-vydeo",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ]
+    }
+  ]
+}

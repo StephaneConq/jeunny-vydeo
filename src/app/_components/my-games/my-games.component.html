@@ -1,0 +1,21 @@
+<main fxLayout="column">
+  <mat-list *ngIf="games" fxFlex="90">
+    <div mat-subheader>Mes jeux</div>
+    <div *ngFor="let game of games">
+      <mat-list-item *ngIf="displayGame(game.payload.doc.data().name)">
+        <mat-icon mat-list-icon [routerLink]="'/game/' + game.payload.doc.data().id">games</mat-icon>
+        <div mat-line [routerLink]="'/game/' + game.payload.doc.data().id">{{game.payload.doc.data().name}}</div>
+        <button mat-icon-button (click)="delete(game.payload.doc.id)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </mat-list-item>
+    </div>
+  </mat-list>
+  <div fxFlex="10" class="search-container">
+    <mat-form-field>
+      <mat-label>Rechercher</mat-label>
+      <mat-icon matPrefix>search</mat-icon>
+      <input type="text" matInput [(ngModel)]="searchModel">
+    </mat-form-field>
+  </div>
+</main>
