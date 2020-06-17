@@ -2,6 +2,7 @@ import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {AuthService} from "../../_services/auth.service";
 import {Router} from "@angular/router";
 import {MatSnackBar} from "@angular/material/snack-bar";
+import {MobileService} from "../../_services/mobile.service";
 
 @Component({
   selector: 'app-sidenav',
@@ -13,7 +14,8 @@ export class SidenavComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private router: Router,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private mobileService: MobileService
   ) {
   }
 
@@ -36,7 +38,9 @@ export class SidenavComponent implements OnInit {
   }
 
   clickedOnLink() {
-    this.clickLinkSidenavEvent.emit();
+    if (this.mobileService.isMobile) {
+      this.clickLinkSidenavEvent.emit();
+    }
   }
 
   get profilePic() {

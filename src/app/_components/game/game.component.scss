@@ -38,6 +38,7 @@ header {
     backdrop-filter: brightness(60%);
     height: 100%;
     margin: 0;
+    width: 100%;
   }
 }
 
@@ -82,8 +83,20 @@ header {
 
   &.back-to-top {
     left: 15px;
+
+    @media screen and (min-width: 600px) {
+      left: calc(15px + 20vw);
+    }
   }
   &.add-collecion {
     right: 15px;
+
+    @media screen and (min-width: 600px) {
+      right: 30px;
+    }
+
+    &:disabled {
+      background-color: #673ab7;
+    }
   }
 }

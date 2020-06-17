@@ -7,6 +7,7 @@ main {
 
   & > div {
     h2 {
+      margin-top: 15px;
       background: linear-gradient(to right, #b68cff 0%, #673ab7 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
@@ -15,6 +16,11 @@ main {
     img {
       width: 50%;
       border-radius: 50%;
+
+      @media screen and (min-width: 600px) {
+        width: auto;
+        height: 50%;
+      }
     }
   }
 

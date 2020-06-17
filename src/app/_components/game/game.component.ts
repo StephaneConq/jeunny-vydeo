@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {Game} from "../../_models/game";
 import {RawgService} from "../../_services/rawg.service";
@@ -26,10 +26,9 @@ export class GameComponent implements OnInit {
   alreadyAdded = false;
   currentGame: Game;
   screenshots: Screenshot[] = [];
-  displayBackToTop = false;
+  displayBackToTop = true;
 
   ngOnInit(): void {
-    window.onscroll = () => this.displayBackToTop = window.pageYOffset > 5;
     this.loaderService.toggleLoading();
     this.route.params.subscribe(params => {
       this.rawgService.getGame(params['id']).subscribe((game: Game) => {
@@ -49,11 +48,7 @@ export class GameComponent implements OnInit {
   }
 
   scroll(el: HTMLElement) {
-    if (el.tagName === 'HEADER') {
-      document.getElementById('toolbar').scrollIntoView();
-    } else {
-      el.scrollIntoView();
-    }
+    el.scrollIntoView();
   }
 
   getLocalDateString(dateString) {

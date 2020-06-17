@@ -1,12 +1,12 @@
 <mat-toolbar id="toolbar" color="primary">
-  <button mat-icon-button (click)="sidenav.toggle()">
+  <button *ngIf="isMobile" mat-icon-button (click)="sidenav.toggle()">
     <mat-icon>menu</mat-icon>
   </button>
   Jeunny Vydeo
 </mat-toolbar>
 <mat-progress-bar mode="indeterminate" *ngIf="loading"></mat-progress-bar>
 <mat-sidenav-container>
-  <mat-sidenav #sidenav>
+  <mat-sidenav #sidenav [mode]="isMobile ? 'over' : 'side'" [opened]="!isMobile">
     <app-sidenav (clickLinkSidenavEvent)="sidenav.toggle()"></app-sidenav>
   </mat-sidenav>
 

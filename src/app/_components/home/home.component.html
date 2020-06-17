@@ -1,6 +1,6 @@
 <main fxLayout="column">
   <div fxFlex="10" fxLayoutAlign="center center">
-    <mat-form-field class="example-full-width">
+    <mat-form-field>
       <input type="text"
              placeholder="Rechercher"
              aria-label="Number"
@@ -9,13 +9,26 @@
              (ngModelChange)="search($event)"
              [matAutocomplete]="auto">
       <mat-autocomplete #auto="matAutocomplete">
-        <mat-option *ngFor="let option of filteredOptions" (click)="selectGame(option.id)">
-          {{option.name}}
-        </mat-option>
+        <ng-container *ngIf="isMobile">
+          <mat-option *ngFor="let option of filteredOptions" (click)="selectGame(option.id)">
+            {{option.name}}
+          </mat-option>
+        </ng-container>
       </mat-autocomplete>
     </mat-form-field>
   </div>
-  <div fxFlex="90"></div>
+  <div fxFlex="90">
+    <ng-container *ngIf="!isMobile">
+      <mat-list>
+        <div mat-subheader *ngIf="searchedValue && searchedValue.length > 0">Résultats pour : {{searchedValue}}</div>
+        <mat-list-item *ngFor="let game of filteredOptions" (click)="selectGame(game.id)">
+          <mat-icon mat-list-icon>gamepad</mat-icon>
+          <div mat-line>{{game.name}}</div>
+          <div mat-line>{{getPlatforms(game)}}</div>
+        </mat-list-item>
+      </mat-list>
+    </ng-container>
+  </div>
 
 
 </main>
