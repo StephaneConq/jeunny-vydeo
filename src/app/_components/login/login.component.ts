@@ -24,11 +24,11 @@ export class LoginComponent implements OnInit {
   async login() {
     this.loaderService.toggleLoading();
     await this.authService.loginWithGoogle();
-    await this.router.navigate(['']);
     this.loaderService.toggleLoading();
     this.snackBar.open('Connecté', 'Fermer', {
       duration: 3000
     });
+    this.router.navigate(['/']);
   }
 
 }

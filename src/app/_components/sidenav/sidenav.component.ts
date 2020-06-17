@@ -47,12 +47,17 @@ export class SidenavComponent implements OnInit {
     return this.authService.user ? this.authService.user.photoURL : '';
   }
 
+  get username() {
+    return this.authService.user ? this.authService.user.displayName : '';
+  }
+
   isOnThisPage(link) {
     return this.router.url.replace('/', '') === link;
   }
 
   logout() {
     this.authService.logout();
+    this.authService.user = null;
     this.snackBar.open('Déconnecté', 'Fermer', {
       duration: 3000
     });

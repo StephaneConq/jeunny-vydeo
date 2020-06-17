@@ -1,7 +1,7 @@
 {
-  "name": "jeunny-vydeo",
-  "short_name": "jeunny-vydeo",
-  "theme_color": "#1976d2",
+  "name": "Jeunny Vydeo",
+  "short_name": "Jeunny Vydeo",
+  "theme_color": "#673ab7",
   "background_color": "#fafafa",
   "display": "standalone",
   "scope": "./",

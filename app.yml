@@ -1,0 +1,18 @@
+service: default
+runtime: nodejs12
+
+handlers:
+  - url: /favicon\.ico
+    static_files: dist/jeunny-vydeo/favicon.ico
+    upload: dist/jeunny-vydeo/favicon\.ico
+
+  - url: /(.*\..*$)
+    static_files: dist/jeunny-vydeo/\1
+    upload: dist/jeunny-vydeo/(.*\..*$)
+
+  - url: /.*
+    secure: always
+    redirect_http_response_code: 301
+    static_files: dist/jeunny-vydeo/index.html
+    upload: dist/jeunny-vydeo/index\.html
+

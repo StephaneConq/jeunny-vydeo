@@ -6,7 +6,7 @@
 </mat-toolbar>
 <mat-progress-bar mode="indeterminate" *ngIf="loading"></mat-progress-bar>
 <mat-sidenav-container>
-  <mat-sidenav #sidenav [mode]="isMobile ? 'over' : 'side'" [opened]="!isMobile">
+  <mat-sidenav #sidenav [mode]="isMobile ? 'over' : 'side'" [opened]="!isMobile && user">
     <app-sidenav (clickLinkSidenavEvent)="sidenav.toggle()"></app-sidenav>
   </mat-sidenav>
 
